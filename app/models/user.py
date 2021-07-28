@@ -3,13 +3,43 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
+follow_user = db.Table(
+    'follows',
+    db.Model.metadata,
+    db.Column("following", db.Integer, db.ForeignKey('users.id')),
+    db.Column("follower", db.Integer, db.ForeignKey('users.id'))
+)
+
+
+class UserType(db.Model):
+    __tablename__ = 'user_types'
+
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(100), nullable=False, unique=True)
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    user_image = db.Column(db.String(500), nullable=True)
+    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
+
+    followers = db.relationship(
+    "User",
+    secondary=follow_user,
+    primaryjoin=(follow_user.c.following == id),
+    secondaryjoin=(follow_user.c.follower == id),
+    backref=db.backref('following', lazy='dynamic'),
+    lazy='dynamic'
+    )
+
+    type = db.relationship('UserType')
 
     @property
     def password(self):
@@ -28,3 +58,46 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+
+
+class Bystander(db.Model):
+    __tablename__ = 'bystanders'
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
+    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+
+    user = db.relationship('User')
+    type = db.relationship('UserType')
+
+
+class Promoter(db.Model):
+    __tablename__ = 'promoters'
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
+    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+
+    user = db.relationship('User')
+    type = db.relationship('UserType')
+
+
+class Fighter(db.Model):
+    __tablename__ = 'fighters'
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
+    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+    fighter_height = db.Column(db.Integer, nullable=False)
+    fighter_weight = db.Column(db.Integer, nullable=False)
+    fighter_reach = db.Column(db.Integer, nullable=True)
+    fighting_style = db.Column(db.String(500), nullable=True)
+    fighter_age = db.Column(db.Integer, nullable=True)
+    fighter_wins = db.Column(db.Integer, nullable=False)
+    fighter_losses = db.Column(db.Integer, nullable=False)
+    fighter_titles = db.Column(db.String(500), nullable=False)
+
+    user = db.relationship('User')
+    type = db.relationship('UserType')
+    comments = db.relationship('Comment', backref='fighter')
