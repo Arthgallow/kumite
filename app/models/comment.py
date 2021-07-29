@@ -29,9 +29,10 @@ class Comment(db.Model):
     )
 
     def to_dict(self):
+
         return {
             'id': self.id,
             'user_id': self.user_id,
             'description': self.description,
-            'thread': self.thread,
+            'thread': [comment.to_dict() for comment in self.thread]
         }
