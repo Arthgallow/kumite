@@ -15,8 +15,8 @@ def seed_users():
         username='bobbie', email='bobbie@aa.io', password='password',
         user_image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ92d0y28IYriJb-iPor5FC5-QJbiKOnjH50A&usqp=CAU",
         user_type_id=1)
-    Frank = User( first_name='Fank', last_name='Dux',
-        username= 'FankDux', email = "frankdux@aa.io", password = "password",
+    Frank = User( first_name='Jean-Claude', last_name='Van Damme',
+        username= 'JCVD', email = "jean-claude@aa.io", password = "password",
         user_image="https://fightstate.com/wp-content/uploads/2015/07/jeanclaudevandamme-large_new.jpg",
         user_type_id=2)
     Yuri = User( first_name='Yuri', last_name='Boyka',

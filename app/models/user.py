@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .comment import Comment, new_comment
 
 
 follow_user = db.Table(
@@ -27,8 +28,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    user_image = db.Column(db.String(500), nullable=True)
-    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
+    user_image = db.Column(db.Text, nullable=True)
+    comments = db.relationship('Comment', secondary=new_comment, backref=db.backref('users', lazy='dynamic'))
+    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'), nullable=False)
+    type = db.relationship('UserType')
 
     followers = db.relationship(
     "User",
@@ -39,7 +42,6 @@ class User(db.Model, UserMixin):
     lazy='dynamic'
     )
 
-    type = db.relationship('UserType')
 
     @property
     def password(self):
@@ -65,30 +67,22 @@ class Bystander(db.Model):
     __tablename__ = 'bystanders'
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
-    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
 
     user = db.relationship('User')
-    type = db.relationship('UserType')
 
 
 class Promoter(db.Model):
     __tablename__ = 'promoters'
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
-    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
 
     user = db.relationship('User')
-    type = db.relationship('UserType')
 
 
 class Fighter(db.Model):
     __tablename__ = 'fighters'
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    user_type_id = db.Column(db.Integer, db.ForeignKey('user_types.id'))
-    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     fighter_height = db.Column(db.Integer, nullable=False)
     fighter_weight = db.Column(db.Integer, nullable=False)
     fighter_reach = db.Column(db.Integer, nullable=True)
@@ -99,5 +93,3 @@ class Fighter(db.Model):
     fighter_titles = db.Column(db.String(500), nullable=False)
 
     user = db.relationship('User')
-    type = db.relationship('UserType')
-    comments = db.relationship('Comment', backref='fighter')

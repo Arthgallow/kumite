@@ -1,5 +1,4 @@
-from capstone.kumite_app.app.models.user import Bystander, Promoter
-from app.models import db, User
+from app.models import db, User, UserType
 
 def seed_user_types():
     Bystander = UserType(type='Bystander')
