@@ -19,6 +19,7 @@ function User() {
   if (!user) {
     return null;
   }
+  
 
   return (
     <ul>
@@ -30,6 +31,9 @@ function User() {
       </li>
       <li>
         <strong>Email</strong> {user.email}
+      </li>
+      <li>
+        <strong>Comments</strong>{user.comments}
       </li>
     </ul>
   );
