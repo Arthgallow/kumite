@@ -12,18 +12,11 @@ const Comment = () => {
     useEffect(() => {},[]);
 
 
-
-    console.log("Sesh", sessionComments)
-
-
-    let featureObj = {type: 'User',
-                        objId: 1}
-
     return (
         <div className="comment">
             <h2>Comments</h2>
-            <NewComment featureObj={featureObj}/>
-            <GetComments featureObj={featureObj}/>
+            <NewComment />
+            <GetComments />
         </div>
     )
 

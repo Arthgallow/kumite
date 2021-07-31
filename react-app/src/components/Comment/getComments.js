@@ -4,19 +4,19 @@ import { getFeatureComments, makeNewComment, deleteComment } from "../../store/c
 import EditComment from "./editComment"
 
 
-const GetComments = (obj) => {
+const GetComments = ({featureObj}) => {
     const sessionUser = useSelector(state => state.session.user)
     const sessionComments = useSelector(state => state.comments)
     const [showEditComment, setShowEditComment] = useState(false)
     const dispatch = useDispatch()
-    const {featureObj} = obj
+    console.log("BIG", featureObj)
 
     let content;
     useEffect(async () => {
         setShowEditComment(false)
         await dispatch(getFeatureComments(featureObj))
 
-    }, [dispatch, setShowEditComment,content])
+    }, [dispatch, setShowEditComment,featureObj])
 
     const comments= (
         sessionComments.comments?.map(comment => {
@@ -42,7 +42,7 @@ const GetComments = (obj) => {
                 </div>
             }
             if(sessionUser.id != comment.user_id){
-                <div className="uneditable_comment" >
+               description = <div className="uneditable_comment" >
                     <div className="comment_description">
                         {comment.description}
                     </div>

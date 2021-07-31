@@ -1,4 +1,3 @@
-from types import resolve_bases
 from flask import Blueprint, jsonify, request, session
 from sqlalchemy import inspect
 from app.models import db, Comment,User
@@ -12,7 +11,6 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/', methods=['POST'])
 def add_comment():
-    print("JUMP", request.json)
     if(request.json['type'] == "User"):
         comment = Comment(
             user_id=request.json['user_id'],
@@ -21,12 +19,7 @@ def add_comment():
 
         db.session.add(comment)
         db.session.commit()
-        print('comment', comment, comment.id)
-        length = len(Comment.query.all())
-        print("length", length)
-        # comment = Comment.query.get(length)
         user= User.query.get(int(request.json['objId']))
-        print('user', user)
         user.comments.append(comment)
         db.session.commit()
 
@@ -51,16 +44,13 @@ def get_comments(feature, id):
 
 @comment_routes.route('/<int:id>/', methods=['DELETE'])
 def delete_comment(id):
-    print("commentId", id)
     comment=Comment.query.get(id)
-    print("feature", comment)
     db.session.delete(comment)
     db.session.commit()
     return {"Message": "Comment Deleted"}
 
 @comment_routes.route('/<int:id>/', methods=['POST'])
 def get_one_comment(id):
-    print("REQ", request.json)
     comment = Comment.query.get(id)
     comment.description = request.json['description']
     db.session.commit()

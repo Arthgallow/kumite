@@ -1,0 +1,48 @@
+.followers_bord{
+    margin: 20px;
+    background-color: indianred;
+    display: grid;
+    grid-area:
+    "title"
+    "list";
+    border: 1px solid black;
+    width: 600px;
+    height: auto;
+
+
+}
+.followers_title{
+    grid-area: "title";
+    margin: 10px;
+    text-decoration: none;
+
+}
+.followers_list{
+    grid-area: "list";
+    display: flex;
+    height: auto;
+    padding : 10px;
+
+}
+
+.follower_link{
+    text-decoration: none;
+    width: auto;
+    height: 5vw;
+    border-radius: 50%;
+}
+.follower_link .follower_img {
+    border:2px solid pink;
+    border-radius: 50% ;
+    width: auto;
+    height: 5vw;
+}
+.follower_name {
+    text-decoration: none;
+    color:rgb(209, 169, 169);
+    font-size: 30px;
+    position:relative;
+    bottom: 65px;
+    text-align: center;
+    text-shadow: black 1px 0 10px;
+}

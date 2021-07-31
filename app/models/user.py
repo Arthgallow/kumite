@@ -58,10 +58,12 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'pic': self.user_image,
         }
 
-
+    def get_followers(self):
+        return [user.to_dict() for user in self.followers]
 
 class Bystander(db.Model):
     __tablename__ = 'bystanders'
