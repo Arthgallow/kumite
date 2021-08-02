@@ -1,6 +1,6 @@
 .followers_bord{
     margin: 20px;
-    background-color: indianred;
+    background-color: black;
     display: grid;
     grid-area:
     "title"
@@ -44,5 +44,5 @@
     position:relative;
     bottom: 65px;
     text-align: center;
-    text-shadow: black 1px 0 10px;
+    text-shadow: black -1px -1px 1px;
 }

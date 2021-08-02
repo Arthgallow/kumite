@@ -1,0 +1,106 @@
+.comments_bord{
+    padding:8px;
+    width: 50vw;
+}
+.comment_thread{
+    display: grid;
+    grid-template-areas:
+    "outer_comment"
+    "inner_comment";
+}
+.comment_box{
+    grid-area: outer_comment;
+    justify-items: stretch;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    display:grid;
+    grid-template-areas:
+    "name colon comment comment comment comment comment comment btn"
+    "inner inner inner inner  inner inner inner inner inner";
+    margin:1vw;
+}
+.btn_box{
+    align-self:right;
+    font-size: 30px;
+    width: 60px;
+    display:flex;
+    float:right;
+    grid-area: btn;
+}
+.inner_comment{
+    display:flex;
+    margin-left:30px;
+    grid-area: inner_comment;
+    flex-direction: column;
+}
+.colon{
+    grid-area: colon;
+    font-size: 40px;
+    width:12px;
+    height:65px;
+}
+.comment_comment{
+
+    width: fit-content;
+    max-width: 100%;
+
+    grid-area: comment;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-size: 25px;
+    margin-left: 25px;
+    min-height: 60px;
+    height: auto;
+    word-break: break-all;
+}
+.btn_box{
+    justify-content: right;
+    align-content:right;
+    padding:0px;
+    margin:0px;
+    width:100px
+}
+.show_btn{
+    width:100%;
+    font-size: auto;
+}
+.show_btn, .btn_box:hover .show_menu{
+    padding:10px;
+    display:flex;
+
+}
+.show_menu, .btn_box:hover .show_btn{
+    display:none;
+    background-color: cornflowerblue;
+}
+.user_pic{
+    height: 60px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pic_on, .user_link:hover .pic_off{
+    display: none;
+
+}
+.pic_off, .user_link:hover .pic_on{
+    color:black;
+    /* display: block; */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    grid-area: comment;
+    font-size: 25px;
+    height:55px;
+    padding-left:10px;
+}
+.user_link{
+    text-decoration: none;
+    margin:0%;
+    padding:0%;
+    width:5vw;
+    grid-area: name;
+}

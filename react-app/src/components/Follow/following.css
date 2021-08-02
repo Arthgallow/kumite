@@ -1,6 +1,6 @@
 .following_bord{
     margin: 20px;
-    background-color: black;
+    background-color: grey;
     display: grid;
     grid-area:
     "title"
@@ -32,22 +32,23 @@
 .following_link{
     text-decoration: none;
     width: auto;
-    height: 5vw;
+    height: 4vw;
     border-radius: 50%;
     margin: 10px;
 }
 .following_link .following_img {
+    align-content: center;
     border:2px solid pink;
     border-radius: 50% ;
     width: auto;
-    height: 5vw;
+    height: 4vw;
 }
 .following_name {
     text-decoration: none;
-    color:rgb(209, 169, 169);
+    color:white;
     font-size: 30px;
     position:relative;
     bottom: 65px;
     text-align: center;
-    text-shadow: black 1px 0 10px;
+    text-shadow: black -1px -1px 1px;
 }

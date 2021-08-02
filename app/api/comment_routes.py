@@ -11,25 +11,53 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/', methods=['POST'])
 def add_comment():
+    data=eval(request.json['type']).query.get(int(request.json['objId']))
+
+    comment = Comment(
+        user_id=request.json['user_id'],
+        description=request.json['description'],
+        user_name=request.json['user_name'],
+        user_img =request.json['user_img'] ,
+    )
+
+    db.session.add(comment)
+    db.session.commit()
+    print('*'*50)
+    print("NEW COMMENT", comment)
+    print('*'*50)
+
+    if(request.json['type'] == "Comment"):
+        print('*'*50)
+        print("ADD COMMENT", request.json['objId'], comment.id)
+        print("Insert Before", request.json['objId'], comment.user_id)
+        print('*'*50)
+        print('*'*50)
+        add_comment = new_comment.insert().values(user_id=int(request.json['objId']), comment_id=comment.id)
+        print('*'*50)
+        print("Insert After", add_comment)
+        print('*'*50)
+        db.session.execute(add_comment)
+        db.session.commit()
+
+        add_to_thread = comment_thread.insert().values()
+
+
     if(request.json['type'] == "User"):
+        print("*"*80)
+        print("FUCK", request.json)
         comment = Comment(
             user_id=request.json['user_id'],
             description=request.json['description'],
+            user_name=request.json['user_name'],
         )
 
-        db.session.add(comment)
-        db.session.commit()
-        user= User.query.get(int(request.json['objId']))
-        user.comments.append(comment)
+        feature = data.query.get(int(request.json['objId']))
+        feature.comments.append(comment)
         db.session.commit()
 
-    if(request.json['type'] == "location"):
-        comment = Comment(
-            user_id=request.json['user_id'],
-            description=request.json['description'],
-        )
-        db.session.add(comment)
-        db.session.commit()
+    print('*'*50)
+    print("Hit the Return ", {"comments" : comment.to_dict()})
+    print('*'*50)
 
     return {"comments" : comment.to_dict()}
 
@@ -38,6 +66,7 @@ def add_comment():
 
 @comment_routes.route('/<feature>/<int:id>/')
 def get_comments(feature, id):
+
     feature=eval(feature).query.get(id)
     return {"comments": [comment.to_dict() for comment in feature.comments]}
 

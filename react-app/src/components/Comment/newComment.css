@@ -1,0 +1,14 @@
+.new-comment{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    grid-area: comment;
+    font-size: 25px;
+    margin-left: 25px;
+    height: 60px
+
+}
+.btn{
+    
+}

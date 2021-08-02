@@ -59,7 +59,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'pic': self.user_image,
+            'user_image': self.user_image,
         }
 
     def get_followers(self):
