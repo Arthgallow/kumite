@@ -57,6 +57,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'username': self.username,
             'email': self.email,
             'user_image': self.user_image,
@@ -95,3 +97,16 @@ class Fighter(db.Model):
     fighter_titles = db.Column(db.String(500), nullable=False)
 
     user = db.relationship('User')
+
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'fighter_height': self.fighter_height,
+            'fighter_weight': self.fighter_weight,
+            'fighter_reach': self.fighter_reach,
+            'fighting_style': self.fighting_style,
+            'fighter_age': self.fighter_age,
+            'fighter_wins': self.fighter_wins,
+            'fighter_losses': self.fighter_losses,
+            'fighter_titles': self.fighter_titles,
+        }

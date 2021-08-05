@@ -4,12 +4,17 @@ import session from './session'
 import comments from './comments';
 import followers from './followers';
 import following from './following';
+import reply from './newComment';
+import edit from './editComment';
+
 
 const rootReducer = combineReducers({
   session,
   comments,
   followers,
   following,
+  reply,
+  edit,
 });
 
 

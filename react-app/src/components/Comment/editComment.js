@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {useHistory} from "react-router-dom"
 import { getFeatureComments, editOneComment, makeNewComment, deleteComment } from "../../store/comments"
+import "./editComments.css"
 
 const EditComment = ({comment, hideForm, featureObj}) => {
     const sessionUser = useSelector(state => state.sessionUser)
@@ -35,37 +36,44 @@ const EditComment = ({comment, hideForm, featureObj}) => {
             console.log('Test', featureObj.type.toLowerCase(), featureObj.objId)
         dispatch(editOneComment(editedComment))
         setUpdateComment("")
-        // history.push(`/${featureObj.type.toLowerCase()}`)
-        // hideForm()
-        history.push('/')
+        hideForm()
         }
     }
     const handleCancel = async(e) => {
-        hideForm()
         e.preventDefault();
         setUpdateComment("")
-        console.log("Updated", updateComment)
+        hideForm()
     }
     const handleDelete = async(e) => {
         e.preventDefault()
         let id = comment.id
         let obj = {id, ...featureObj}
+        console.log("TRYING TO DELETE", obj)
         await dispatch(deleteComment(obj))
-        hideForm()
     }
 
 
     return (
         <>
-        <form>
-            <input type="text"
-            value={updateComment}
-            placeholder={comment.description}
-            onChange={(e) => setUpdateComment(e.target.value)} />
-            <button type="submit" onClick={handleCommit}>Update</button>
+        <form className="edit_form">
+            <div className="input_box">
+                EDIT COMMENT
+                <input
+                    className="edit_form_input"
+                    type="text"
+                    autoFocus={true}
+                    value={updateComment}
+                    placeholder={comment.description}
+                    onChange={(e) => setUpdateComment(e.target.value)} />
+            </div>
+            <div className="top">
+                <button className="btn cancel_btn" onClick={handleCancel}>X</button>
+            </div >
+            <div className="low">
+                <img src={"https://image.flaticon.com/icons/png/512/3388/3388943.png"} className='btn submit_btn' onClick={handleCommit}/>
+                <img src={"https://image.flaticon.com/icons/png/512/3159/3159662.png"} className="btn delete_btn" onClick={handleDelete}></img>
+            </div>
         </form>
-        <button onClick={handleCancel}>X</button>
-        <button onClick={handleDelete}>Delete</button>
         </>
     )
 }

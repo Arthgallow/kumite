@@ -21,6 +21,7 @@ export const getFeatureComments = (featureObj) => async (dispatch) => {
 
 export const makeNewComment = (comment) => async (dispatch) => {
     let featureObj;
+    console.log("Comment", comment)
 
     if(comment.type !== "Comment"){
         featureObj = {
@@ -65,10 +66,20 @@ export const deleteComment = (comment) => async (dispatch) => {
 }
 
 export const editOneComment = (comment) => async (dispatch) => {
-    let featureObj = {
-        type: comment.type,
-        objId: comment.objId
+    let featureObj
+    if(comment.type !== "Comment"){
+        featureObj = {
+            type: comment.type,
+            objId: comment.objId
+        }
+    } else{
+        featureObj = {
+            type: comment.parentObj,
+            objId: comment.parentId
+        }
     }
+    console.log("EDIT ONE COMMENT RES", comment)
+
     const response = await fetch(`/api/comments/${comment.id}/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -76,6 +87,7 @@ export const editOneComment = (comment) => async (dispatch) => {
     });
     if (response.ok) {
         const comment = await response.json();
+        console.log("UPDATED COMMENT", comment)
         dispatch(getFeatureComments(featureObj));
     }
 }

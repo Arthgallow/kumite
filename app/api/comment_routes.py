@@ -28,19 +28,20 @@ def add_comment():
 
     if(request.json['type'] == "Comment"):
         print('*'*50)
-        print("ADD COMMENT", request.json['objId'], comment.id)
+        print("ADD COMMENT", comment.user_id, comment.id)
         print("Insert Before", request.json['objId'], comment.user_id)
         print('*'*50)
         print('*'*50)
-        add_comment = new_comment.insert().values(user_id=int(request.json['objId']), comment_id=comment.id)
+        add_comment = new_comment.insert().values(user_id=comment.user_id, comment_id=comment.id)
         print('*'*50)
         print("Insert After", add_comment)
         print('*'*50)
         db.session.execute(add_comment)
         db.session.commit()
 
-        add_to_thread = comment_thread.insert().values()
-
+        add_to_thread = comment_thread.insert().values(post=request.json['objId'], reply=comment.id, )
+        db.session.execute(add_to_thread)
+        db.session.commit()
 
     if(request.json['type'] == "User"):
         print("*"*80)
@@ -81,6 +82,7 @@ def delete_comment(id):
 @comment_routes.route('/<int:id>/', methods=['POST'])
 def get_one_comment(id):
     comment = Comment.query.get(id)
+    print("COMMENT", comment)
     comment.description = request.json['description']
     db.session.commit()
     return {"Message": "Comment Updated"}

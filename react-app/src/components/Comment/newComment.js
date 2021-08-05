@@ -3,11 +3,10 @@ import {useDispatch, useSelector} from "react-redux"
 import {makeNewComment} from "../../store/comments"
 import "./newComment.css"
 
-const NewComment = ({featureObj}) => {
+const NewComment = ({featureObj, hideForm, showNewComment}) => {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const [newComment, setNewComment] = useState('')
-
     useEffect(async () => {
 
 
@@ -23,22 +22,31 @@ const NewComment = ({featureObj}) => {
             user_img: sessionUser.user_image
         }
         if(comment){
+            console.log("parentID", featureObj)
             await dispatch(makeNewComment({...comment, ...featureObj}))
             setNewComment('')
+            hideForm()
         }
     }
 
 
     return (
-            <form onSubmit={handleCreateComment}>
+
+            <form id="newComment" className="new_comment_box" onSubmit={handleCreateComment}>
                 <input
-                    className="new-comment"
+                    className="input_comment"
                     type="text"
                     placeholder="Add Comment"
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
+                    autoFocus={showNewComment}
                     />
-                <button className="btn" type="submit">Make Comment</button>
+                <button className="btn btn1" type="submit">
+                    <img src={"https://image.flaticon.com/icons/png/512/54/54761.png"} className="btn btn1" type="submit"></img>
+
+                </button>
+                <img src={"https://image.flaticon.com/icons/png/512/561/561189.png"} className="btn btn2" onClick={()=> setNewComment('') && hideForm}></img>
+
             </form>
 
     )

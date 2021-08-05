@@ -6,6 +6,7 @@ import GetFollowers from '../Follow/getFollowers';
 import FollowUser from '../Follow/followUser';
 import UnFollowUser from '../Follow/unFollowUser';
 import GetFollowing from '../Follow/getFollowing';
+import GetFighters from '../GetFighters/getFighters';
 
 function User() {
   const [user, setUser] = useState({});
@@ -21,7 +22,7 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId]);
+  }, [userId, FollowUser, UnFollowUser, GetFollowing]);
 
   if (!user) {
     return null;
@@ -46,14 +47,14 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
       <li>
+        </li>
         <strong>Comments</strong>
-        <NewComment featureObj={featureObj} />
-        <GetComments featureObj={featureObj} />
+        <GetFighters />
+        {/* <GetComments featureObj={featureObj} />
         <GetFollowers featureObj={featureObj} />
         <FollowUser featureObj={featureObj} />
         <UnFollowUser featureObj={featureObj} />
-        <GetFollowing featureObj={featureObj} />
-      </li>
+        <GetFollowing featureObj={featureObj} /> */}
     </ul>
   );
 }

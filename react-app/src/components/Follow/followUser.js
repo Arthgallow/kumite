@@ -1,6 +1,7 @@
-import React, {useState, useEffec} from "react";
+import React, {useState, useEffec, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {followUser} from "../../store/followers"
+
 
 
 const FollowUser = ({featureObj}) => {
