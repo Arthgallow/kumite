@@ -9,7 +9,7 @@ This is the starter for the Flask React project.
    ```bash
    git clone https://github.com/appacademy-starters/python-project-starter.git
    ```
- 
+
 2. Install dependencies
 
       ```bash
@@ -100,8 +100,8 @@ hurt to run it again.
 10. set up your database
 
       ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+      heroku run -a the-kumite flask db upgrade
+      heroku run -a the-kumite flask seed all
       ```
 
 11. Under Settings find "Config Vars" and add any additional/secret .env

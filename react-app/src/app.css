@@ -5,12 +5,19 @@
     "content_area";
 }
 .App_nav_bar{
-    display:grid;
-    grid-area:nav_bar;
+    position:fixed;
+    top:0;
+    /* display:grid;
+    grid-area:content_area;
+    overflow-y: hidden;
+    height: 1000px; */
+    background-color: violet;
 }
 .App_content{
+    position:static;
+    top:100px;
 
-    display:grid;
-    grid-area:content_area;
-    overflow:hidden
+    grid-area:nav_bar;
+    display:flex;
+    overflow:hidden;
 }

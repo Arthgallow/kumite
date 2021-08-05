@@ -26,7 +26,7 @@
     /* background-color: orange; */
     grid-area: top_l;
     width: 10vw;
-    max-height: 60vh;
+    max-height: 100vh;
     margin-left:1.5vw;
     height: auto;
     display:grid;
@@ -37,12 +37,12 @@
 .image_container{
     display:grid;
     grid-area: img_top;
-    max-height: auto;
-    width:25vw;
+    max-height: 40vh;
+    width:auto;
 }
 .user_image{
-    height: auto;
-    width:25vw;
+    height: 40vh;
+    width:auto;
     margin-left:auto;
     margin-right:auto;
 
@@ -74,7 +74,7 @@
     background-color: transparent;
     grid-area: top_r;
     width: 50vw;
-    margin-left:10vw;
+    margin-left:20vw;
     margin-bottom: 2vw;
     height: auto;
     align-content: center;
@@ -85,9 +85,11 @@
     grid-area: bottom_l;
     width: 45vw;
     margin:3vw;
-    height: auto
+    height: auto;
+    top: auto;
 }
 .user_full_name{ /* text-shadow: 3px 3px 15px black; */
+    right:0;
     text-shadow:0px 0 15px rgba(193,41,41);
 }
 .get_following{

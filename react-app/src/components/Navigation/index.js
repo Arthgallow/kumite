@@ -16,13 +16,21 @@ const NavBar = () => {
   if(sessionUser !== null) {
     return(
       <nav className="nav_bar">
-
+          <NavLink to={`/users/${sessionUser.id}`} exact={true} activeClassName='active'>
+            Home
+          </NavLink>
+          <NavLink to='/fighters' exact={true} activeClassName='active'>
+            Fighters
+          </NavLink>
+          <LogoutButton />
       </nav>
     )
   }
   if(sessionUser === null) {
     return(
       <nav className="nav_bar">
+        <LoginFormModal />
+        <SignUpFormModal />
 
       </nav>
     )
@@ -33,23 +41,14 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
         </li>
         <li>
-          <LoginFormModal />
         </li>
         <li>
-          <SignUpFormModal />
         </li>
         <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
         </li>
         <li>
-          <LogoutButton />
         </li>
       </ul>
     </nav>
