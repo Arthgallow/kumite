@@ -19,6 +19,8 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     description = db.Column(db.String(500))
+    user_name = db.Column(db.String(50))
+    user_img = db.Column(db.Text)
 
     thread = db.relationship(
         'Comment',
@@ -29,9 +31,12 @@ class Comment(db.Model):
     )
 
     def to_dict(self):
+
         return {
             'id': self.id,
+            'user_name': self.user_name,
             'user_id': self.user_id,
+            'user_pic': self.user_img,
             'description': self.description,
-            'thread': self.thread,
+            'thread': [comment.to_dict() for comment in self.thread]
         }

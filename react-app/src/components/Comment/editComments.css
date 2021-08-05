@@ -1,0 +1,85 @@
+.edit_form{
+    font-size: 25px;
+    border:1px solid black;
+
+    display: grid;
+    height:325px;
+    width:600px;
+    grid-template-areas:
+    " top top top"
+    " mid mid mid"
+    " low low low";
+}
+.top{
+    font-size: 25px;
+    display: grid;
+    grid-area:top;
+    height: 5px;
+
+}
+.mid{
+    display: grid;
+    grid-area:mid;
+}
+.low{
+    height: 60px;
+    display:grid;
+    grid-area:low;
+    grid-template-areas:
+    "low_1 low_2 low_3 low_4 low_5";
+}
+.input_box{
+    justify-content: center;
+    align-items: center;
+    border:1px solid black;
+    display: grid;
+    grid-area:mid;
+    word-wrap: normal;
+    background-color:rgba(0, 0, 0, 0.63);
+    text-shadow: 0px 0px 25px rgba(255, 0, 0, 0.623);
+    color:white;
+
+}
+.edit_form_input{
+    font-size: 25px;
+    border:1px solid black;
+
+    height: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    width: 500px;
+}
+.submit_btn{
+    align-content: center;
+    justify-content: center;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 40px;
+
+
+
+    display:grid;
+    grid-area:low_2;
+
+}
+.cancel_btn{
+    width: fit-content;
+    height: fit-content;
+    justify-self: right;
+    border:1px solid black;
+    font-size: 25px;
+    display:grid;
+    grid-area:btn;
+}
+.delete_btn{
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 40px;
+    grid-area:low_4;
+    display:grid;
+}

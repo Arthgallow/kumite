@@ -1,9 +1,34 @@
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import SignUpForm from '../auth/SignUpForm';
+import LoginFormModal from '../LoginFormModal';
+import SignUpFormModal from '../SignupFormModal';
+import "./Navigation.css"
 
 const NavBar = () => {
+  let sessionUser = useSelector(state => state.session.user);
+  console.log("WHO AM I??", sessionUser);
+  console.log("True?", sessionUser !== null);
+  console.log("False", sessionUser === null);
+  if(sessionUser !== null) {
+    return(
+      <nav className="nav_bar">
+
+      </nav>
+    )
+  }
+  if(sessionUser === null) {
+    return(
+      <nav className="nav_bar">
+
+      </nav>
+    )
+  }
+
+
   return (
     <nav>
       <ul>
@@ -13,14 +38,10 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
+          <LoginFormModal />
         </li>
         <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
+          <SignUpFormModal />
         </li>
         <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
