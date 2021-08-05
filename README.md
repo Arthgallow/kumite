@@ -9,7 +9,7 @@ This is the starter for the Flask React project.
    ```bash
    git clone https://github.com/appacademy-starters/python-project-starter.git
    ```
-
+ 
 2. Install dependencies
 
       ```bash

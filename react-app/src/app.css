@@ -9,7 +9,7 @@
     grid-area:nav_bar;
 }
 .App_content{
-    
+
     display:grid;
     grid-area:content_area;
     overflow:hidden
