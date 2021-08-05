@@ -155,10 +155,10 @@ const GetComments = ({featureObj}) => {
                                 <div className="show_menu">{menu}</div>
                             </div>
                         </div>
-                        <div className="inner_comment">
-                            {retrieveThread(thread)}
+//                         <div className="inner_comment">
+//                             {retrieveThread(thread)}
 
-                        </div>
+//                         </div>
                     </div>
                 )
             })
