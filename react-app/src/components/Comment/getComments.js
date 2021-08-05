@@ -156,7 +156,7 @@ const GetComments = ({featureObj}) => {
                             </div>
                         </div>
                         <div className="inner_comment">
-                            {retrieveThread(thread)}
+                            {/* {retrieveThread(thread)} */}
 
                         </div>
                     </div>
