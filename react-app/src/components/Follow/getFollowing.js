@@ -7,13 +7,12 @@ import "./following.css"
 const GetFollowed = ({featureObj}) => {
     const dispatch = useDispatch();
     const sessionFollowing = useSelector(state => state.following);
-    console.log("followings", sessionFollowing);
-
+    let x = 0
     let following= [];
     for( const [key, value] in Object.entries(sessionFollowing) ) {
 
         following.push(
-            <Link className="following_link" to={`/users/${sessionFollowing[key].id}`}>
+            <Link key={x+=1} className="following_link" to={`/users/${sessionFollowing[key].id}`}>
                 <img className="following_img" src={sessionFollowing[key].user_image} alt={sessionFollowing[key].name} />
                 <h2 className="following_name">{sessionFollowing[key].username}</h2>
             </Link>

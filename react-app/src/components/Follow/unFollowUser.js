@@ -1,6 +1,7 @@
 import React, {useState, useEffec} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {unfollowUser} from "../../store/followers"
+import "./unfollowBtn.css"
 
 
 const UnfollowUser = ({featureObj}) => {
@@ -13,7 +14,7 @@ const UnfollowUser = ({featureObj}) => {
     }
     return(
         <div className="followUser">
-            <button onClick={handleClick}>UnFollow User</button>
+            <button className="unfollow_btn" onClick={handleClick}>UnFollow User</button>
         </div>
     )
 }

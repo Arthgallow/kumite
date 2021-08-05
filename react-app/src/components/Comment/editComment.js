@@ -9,9 +9,6 @@ const EditComment = ({comment, hideForm, featureObj}) => {
     const [updateComment, setUpdateComment] = useState("")
     const dispatch = useDispatch()
     const history = useHistory()
-    console.log("COMMENT", comment)
-    console.log("FEATURE", featureObj)
-    console.log("SESSION", hideForm)
 
     useEffect(() => {
 
@@ -48,7 +45,6 @@ const EditComment = ({comment, hideForm, featureObj}) => {
         e.preventDefault()
         let id = comment.id
         let obj = {id, ...featureObj}
-        console.log("TRYING TO DELETE", obj)
         await dispatch(deleteComment(obj))
     }
 

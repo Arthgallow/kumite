@@ -1,0 +1,99 @@
+.user_page_container_bord {
+    margin-top:100px;
+    display:grid;
+    width:90vw;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80vh;
+    border:1px solid black;
+    height:auto ;
+    width: auto;
+    background-color: transparent;
+    perspective: 1000px;
+    /* overflow: hidden; */
+    grid-template-areas:
+    "top_l top_l top_r top_r top_r top_r top_r"
+    "bottom_l bottom_l  bottom_l bottom_l bottom_r  bottom_r bottom_r"
+    ;
+}
+.user_page_container_left_top{
+    font-size: 25px;
+    /* box-shadow:
+    inset 0 -3em 3em rgb(0,0,0,0.1),
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(193,41,41,0.3); */
+
+    /* background-color: orange; */
+    grid-area: top_l;
+    width: 10vw;
+    max-height: 60vh;
+    margin-left:1.5vw;
+    height: auto;
+    display:grid;
+    grid-template-areas:
+    "img_top"
+    "img_bottom";
+}
+.image_container{
+    display:grid;
+    grid-area: img_top;
+    max-height: auto;
+    width:25vw;
+}
+.user_image{
+    height: auto;
+    width:25vw;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+.button_container{
+
+    display:grid;
+    grid-area: img_bottom;
+    grid-template-areas: "button_l button_r";
+}
+.follower_button{
+    grid-area: button_l;
+}
+.following_button{
+    grid-area: button_r;
+}
+.user_page_container_left_bottom{
+    /* background-color: darkgoldenrod; */
+    grid-area: bottom_r;
+    width: 35vw;
+    margin-top: 1.5vh;
+    padding-top: 0.5vh;
+    margin-left:0.5vw;
+    height: auto
+}
+.user_page_container_right_top{
+
+    display:grid;
+    background-color: transparent;
+    grid-area: top_r;
+    width: 50vw;
+    margin-left:10vw;
+    margin-bottom: 2vw;
+    height: auto;
+    align-content: center;
+    justify-content: center;
+    font-size: 6vh;
+}
+.user_page_container_right_bottom{  /* background-color: rgb(17, 103, 233); */
+    grid-area: bottom_l;
+    width: 45vw;
+    margin:3vw;
+    height: auto
+}
+.user_full_name{ /* text-shadow: 3px 3px 15px black; */
+    text-shadow:0px 0 15px rgba(193,41,41);
+}
+.get_following{
+    margin:20px;
+}
+
+.get_followers{
+    margin:20px;
+}

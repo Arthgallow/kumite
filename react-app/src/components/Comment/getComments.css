@@ -2,17 +2,17 @@
 
     border-left:1px solid rgb(253, 255, 252);
     padding:8px;
-    width: 50vw;
+    width: 100%;
     box-shadow:
-       inset 0 -3em 6em rgb(49, 8, 8),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(193,41,41,0.3);
+    inset 0 -3em 3em rgb(0,0,0,0.1),
+          0 0  0 2px rgb(255,255,255),
+          0.3em 0.3em 1em rgba(193,41,41,0.3);
 
 
 }
 .comment_thread{
 
-    color:grey;
+    color:black;
     border-left:1px solid grey;
     padding: 20px;
     display: grid;
@@ -69,8 +69,7 @@
 .comment_comment{
     width: fit-content;
     max-width: 100%;
-    color:rgb(165, 165, 165);
-
+    color:black;
     grid-area: comment;
     display:flex;
     flex-direction: column;
@@ -101,7 +100,28 @@
     display:none;
     background-color: cornflowerblue;
 }
-
+.show_menu{
+    background-color: transparent;
+    width: 100%;
+    grid-template-areas:
+    "btn_1 btn_2 btn_3";
+}
+.reply_btn{
+    grid-area: btn_1;
+    height: 5vh;
+    width: 5vh;
+}
+.edit_btn{
+    grid-area: btn_2;
+   height: 5vh;
+    width: 5vh;
+}
+.cancel_btn{
+    border:none;
+    grid-area: btn_3;
+    height: 5vh;
+    width: 5vh;
+}
 .user_pic{
     height: 60px;
     width: auto;

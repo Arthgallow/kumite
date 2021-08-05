@@ -11,7 +11,6 @@ const setCommentId= (commentId)=>({
 })
 
 export const setEditComment=(status)=>(dispatch)=>{
-    console.log("Status", status)
 
     dispatch(setEditCommentStatus(status));
     return null
@@ -27,7 +26,6 @@ let initialState = {'status':false};
 
 const  editReducer = (state = initialState, action) => {
     let newState;
-    console.log("SET Comment", state)
 
     switch (action.type) {
         case SET_COMMENT:

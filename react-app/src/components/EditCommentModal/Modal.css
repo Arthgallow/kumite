@@ -1,0 +1,5 @@
+.edit_btn{
+    grid-area: btn_2;
+    height: 5vh;
+    width: 5vh;
+}

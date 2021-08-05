@@ -8,12 +8,11 @@ import './follower.css'
 const GetFollowers = ({featureObj}) => {
     const dispatch = useDispatch();
     const sessionFollowers = useSelector(state => state.followers);
-    console.log("Session Followers" , sessionFollowers);
-
+    let x =0
     let followers= [];
     for( const [key, value] in Object.entries(sessionFollowers) ) {
         followers.push(
-            <Link className="follower_link" to={`/users/${sessionFollowers[key].id}`}>
+            <Link key={x+=1} className="follower_link" to={`/users/${sessionFollowers[key].id}`}>
                 <img className="follower_img" src={sessionFollowers[key].user_image}  alt={sessionFollowers[key].name} />
                 <h2 className="follower_name">{sessionFollowers[key].username}</h2>
             </Link>
@@ -25,9 +24,9 @@ const GetFollowers = ({featureObj}) => {
     }, [dispatch, featureObj])
 
     return(
-        <div className="followers_bord">
-            <div className="followers_title">FOLLOWERS</div>
-            <div className="followers_list">
+        <div className="follower_bord">
+            <div className="follower_title">FOLLOWERS</div>
+            <div className="follower_list">
                 {followers}
             </div>
         </div>

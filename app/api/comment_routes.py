@@ -27,15 +27,7 @@ def add_comment():
     print('*'*50)
 
     if(request.json['type'] == "Comment"):
-        print('*'*50)
-        print("ADD COMMENT", comment.user_id, comment.id)
-        print("Insert Before", request.json['objId'], comment.user_id)
-        print('*'*50)
-        print('*'*50)
         add_comment = new_comment.insert().values(user_id=comment.user_id, comment_id=comment.id)
-        print('*'*50)
-        print("Insert After", add_comment)
-        print('*'*50)
         db.session.execute(add_comment)
         db.session.commit()
 
@@ -44,21 +36,16 @@ def add_comment():
         db.session.commit()
 
     if(request.json['type'] == "User"):
-        print("*"*80)
-        print("FUCK", request.json)
         comment = Comment(
             user_id=request.json['user_id'],
             description=request.json['description'],
             user_name=request.json['user_name'],
+            user_img =request.json['user_img'] ,
         )
 
         feature = data.query.get(int(request.json['objId']))
         feature.comments.append(comment)
         db.session.commit()
-
-    print('*'*50)
-    print("Hit the Return ", {"comments" : comment.to_dict()})
-    print('*'*50)
 
     return {"comments" : comment.to_dict()}
 

@@ -1,14 +1,19 @@
 .following_bord{
-    margin: 20px;
-    background-color: grey;
+
+    border-radius: 25px;
+    margin: 50px;
+    box-shadow:
+       inset 0 -3em 3em rgb(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(193,41,41,0.3);
     display: grid;
     grid-area:
     "title"
     "list";
-    border: 1px solid black;
-    width: 600px;
+    margin:auto;
     height: auto;
-
+    width: 75vh;
+    background-color: transparent;
 
 }
 .following_title{
@@ -38,7 +43,10 @@
 }
 .following_link .following_img {
     align-content: center;
-    border:2px solid pink;
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.2em 1.5em rgb(193, 41, 41);
     border-radius: 50% ;
     width: auto;
     height: 4vw;

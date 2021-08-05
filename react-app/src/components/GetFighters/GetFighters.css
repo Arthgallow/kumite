@@ -112,7 +112,7 @@ p{
     display:grid;
     grid-area: bottom;
     height: 150px;
-    
+
 
 }
 
@@ -127,64 +127,3 @@ p{
     height: auto;
     width:300px;
 }
-
-/*
-
-
-.fighter_card_inner{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    display: grid;
-    grid-template-areas:
-    "top "
-    "bottom";
-}
-.fighter_card_container:hover  .fighter_card_inner {
-    transform: rotateY(180deg);
-}
-.fighter_card_front, .fighter_card_back{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-   -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-.fighter_card_front{
-    height:400px;
-}
-.fighter_card_front_top{
-    background-color: white;
-    position: relative;
-    display: grid;
-    grid-area: top;
-    height: 200px;
-    width: 300px;
-}
-.fighter_card_front_bottom{
-    position: absolute;
-    background-color: white;
-    display: grid;
-    grid-area: bottom;
-    height: 200px;
-    width: 300px;
-}
-
-.fighter_card_front_info{
-
-}
-.fighter_card_name{
-    height: 200px;
-    width: 280px;
-    margin-left:10px;
-    margin-right:10px;
-    position: absolute;
-    font-size:25px;
-}
-.fighter_card_back{
-    transform: rotate(180deg);
-}
-*/

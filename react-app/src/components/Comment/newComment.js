@@ -9,9 +9,8 @@ const NewComment = ({featureObj, hideForm, showNewComment}) => {
     const [newComment, setNewComment] = useState('')
     useEffect(async () => {
 
-
     }, [dispatch, newComment])
-
+    console.log(featureObj)
     const handleCreateComment= async (e) => {
 
         e.preventDefault()
@@ -23,6 +22,7 @@ const NewComment = ({featureObj, hideForm, showNewComment}) => {
         }
         if(comment){
             console.log("parentID", featureObj)
+            console.log("user", sessionUser)
             await dispatch(makeNewComment({...comment, ...featureObj}))
             setNewComment('')
             hideForm()

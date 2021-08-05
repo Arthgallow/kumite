@@ -1,0 +1,16 @@
+.App{
+    display:grid;
+    grid-template-areas:
+    "nav_bar"
+    "content_area";
+}
+.App_nav_bar{
+    display:grid;
+    grid-area:nav_bar;
+}
+.App_content{
+    
+    display:grid;
+    grid-area:content_area;
+    overflow:hidden
+}

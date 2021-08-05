@@ -1,6 +1,7 @@
 import React, {useState, useEffec, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {followUser} from "../../store/followers"
+import './followBtn.css'
 
 
 
@@ -14,7 +15,7 @@ const FollowUser = ({featureObj}) => {
     }
     return(
         <div className="follow_user">
-            <button onClick={handleClick}>Follow User</button>
+            <button className="follow_btn" onClick={handleClick}>Follow User</button>
         </div>
     )
 }

@@ -12,7 +12,6 @@ import NewComment from "./newComment"
 
 
 const GetComments = ({featureObj}) => {
-    console.log("FEATURE", featureObj)
     let parentObj = featureObj.type
     let parentId = featureObj.objId
     const sessionUser = useSelector(state => state.session.user)
@@ -51,57 +50,47 @@ const GetComments = ({featureObj}) => {
             let menu
             if(comment.user_id === sessionUser.id) {
                 menu = (
-                <div>
-                <button onClick={()=>openNewComment(comment.id) } >
-                    Reply
-                </button>
-                <div onClick={()=>closeNewComment()}>Cancel</div>
+                <>
+                <img className="reply_btn" onClick={()=>openNewComment(comment.id)} src={"https://image.flaticon.com/icons/png/512/54/54761.png"} />
+
+                <img className="cancel_btn" src={"https://image.flaticon.com/icons/png/512/561/561189.png"} onClick={()=>closeNewComment()} />
                 <EditCommentModal
+                className="edit_btn"
                     comment={comment}
                     featureObj={{type: "Comment", objId: comment.id,
                     parentObj, parentId
                 }}
                 />
 
-                </div>
+                </>
             )}
             if(comment.user_id !== sessionUser.id) {
                 menu = (
                 <>
-                <button onClick={()=>openNewComment(comment.id)}>
-                    Reply
-                </button>
-                <div onClick={()=>closeNewComment()}>Cancel</div>
+                <img className="reply_btn" onClick={()=>openNewComment(comment.id)} src={"https://image.flaticon.com/icons/png/512/54/54761.png"} />
+                <img className="cancel_btn" src={"https://image.flaticon.com/icons/png/512/561/561189.png"} onClick={()=>closeNewComment()} />
                 </>
             )}
 
             const retrieveThread = (thing) => thing.thread.map(thread => {
                 if(thread.user_id === sessionUser.id) {
-                 menu = (
-                    <>
-                    <button onClick={()=>openNewComment(thread.id)} >
-                        Reply
-
-                    </button>
-                    <div onClick={()=>closeNewComment()}>Cancel</div>
-                    <EditCommentModal
-                        comment={thread}
-                        featureObj={{type: "Comment", objId: thread.id,
-                            parentObj, parentId
-                    }}
-                    />
-                    </>
-                )
-            }
+                    menu = (
+                        <>
+                        <img className="reply_btn" onClick={()=>openNewComment(thread.id)} src={"https://image.flaticon.com/icons/png/512/54/54761.png"} />
+                        <img className="cancel_btn" src={"https://image.flaticon.com/icons/png/512/561/561189.png"} onClick={()=>closeNewComment()} />
+                        <EditCommentModal
+                            comment={thread}
+                            featureObj={{type: "Comment", objId: thread.id,
+                                parentObj, parentId
+                        }}
+                        />
+                        </>
+                )}
                 if(thread.user_id !== sessionUser.id) {
                     menu = (
                     <>
-                    <button
-                    onClick={()=>openNewComment(thread.id)}
-                    >
-                        Reply
-                    </button>
-                    <div onClick={()=>closeNewComment()}>Cancel</div>
+                    <img className="reply_btn" onClick={()=>openNewComment(thread.id)} src={"https://image.flaticon.com/icons/png/512/54/54761.png"} />
+                    <img className="cancel_btn" src={"https://image.flaticon.com/icons/png/512/561/561189.png"} onClick={()=>closeNewComment()} />
                     </>
 
                 )}
@@ -109,6 +98,7 @@ const GetComments = ({featureObj}) => {
                 if(thread.thread.length !== 0) {
                     return  (
                         <div
+                        key={thread.id}
                         className="comment_thread ">
                             <div className="comment_box">
                                 <Link className="user_link" to={`/users/${thread.user_id}`}>
@@ -142,39 +132,39 @@ const GetComments = ({featureObj}) => {
                     )
                 }
                 return (
-                    <>
-                    <div className="comment_box ">
-                        <Link className="user_link" to={`/users/${thread.user_id}`}>
-                            <img className="user_pic pic_on"  src={thread.user_pic}/>
-                            <a className="pic_off">{thread.user_name} </a>
-                        </Link>
-                        <div className="colon">:</div>
-                        <div  style={{"backgroundColor":"pink"}}className="comment_comment">
+                    <div key={thread.id}>
+                        <div className="comment_box ">
+                            <Link className="user_link" to={`/users/${thread.user_id}`}>
+                                <img className="user_pic pic_on"  src={thread.user_pic}/>
+                                <a className="pic_off">{thread.user_name} </a>
+                            </Link>
+                            <div className="colon">:</div>
+                            <div  style={{"backgroundColor":"pink"}}className="comment_comment">
 
-                            {thread.description}
-                            { showNewComment  && ( <> {thread.id === commentId && (<NewComment
-                                featureObj={{type: 'Comment', objId: thread.id,
-                                parentObj, parentId:parentId }}
-                                hideForm={()=>closeNewComment()}
-                                showNewComment={showNewComment}
-                                />)}</>)
-                            }
+                                {thread.description}
+                                { showNewComment  && ( <> {thread.id === commentId && (<NewComment
+                                    featureObj={{type: 'Comment', objId: thread.id,
+                                    parentObj, parentId:parentId }}
+                                    hideForm={()=>closeNewComment()}
+                                    showNewComment={showNewComment}
+                                    />)}</>)
+                                }
+                            </div>
+                            <div className="btn_box">
+                                <div className="show_btn">...</div>
+                                <div className="show_menu">{menu}</div>
+                            </div>
                         </div>
-                        <div className="btn_box">
-                            <div className="show_btn">...</div>
-                            <div className="show_menu">{menu}</div>
+                        <div className="inner_comment">
+                            {retrieveThread(thread)}
+
                         </div>
                     </div>
-                    <div className="inner_comment">
-                        {retrieveThread(thread)}
-
-                    </div>
-                        </>
                 )
             })
 
             return (
-            <div className="comment_thread" >
+            <div key={comment.id} className="comment_thread" >
                 <div className="comment_box ">
                     <Link className="user_link" to={`/users/${comment.user_id}`}>
                         <img className="user_pic pic_on"  src={comment.user_pic}/>

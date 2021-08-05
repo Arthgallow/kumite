@@ -7,10 +7,8 @@ const getFollowers = (followers) => ({
 
 
 export const getUsersFollowers= (featureObj) => async(dispatch) => {
-    console.log("FEATURE", featureObj);
     const response = await fetch(`/api/follows/${featureObj.type}/${featureObj.objId}/`)
     const data = await response.json();
-    console.log(data);
 
     if(response.ok){
         dispatch(getFollowers(data));
@@ -19,7 +17,6 @@ export const getUsersFollowers= (featureObj) => async(dispatch) => {
 };
 
 export const followUser = ({featureObj, sessionUser}) => async(dispatch) => {
-    console.log("FEATURE", featureObj, sessionUser);
     const response = await fetch(`/api/follows/${featureObj.type}/${featureObj.objId}/`, {
         method: 'POST',
         headers: {
@@ -33,7 +30,6 @@ export const followUser = ({featureObj, sessionUser}) => async(dispatch) => {
     }
 }
 export const unfollowUser= ({featureObj, sessionUser}) => async(dispatch) => {
-    console.log("FEATURE", featureObj, sessionUser);
     const response = await fetch(`/api/follows/${featureObj.type}/${featureObj.objId}/`, {
         method: 'DELETE',
         headers: {
@@ -43,7 +39,6 @@ export const unfollowUser= ({featureObj, sessionUser}) => async(dispatch) => {
     })
     if(response.ok){
         const data= await response.json()
-        console.log("DATA", data);
         getUsersFollowers(featureObj)
     }
 }
@@ -53,7 +48,6 @@ let initialState = {}
 const followerReducer = (state = initialState , action) => {
     switch (action.type) {
         case GET_USER_FOLLOWERS:
-            console.log(action.payload)
             let res ={
                 ...action.payload
             }

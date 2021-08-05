@@ -9,8 +9,7 @@ const getComments = (comments) => ({
 
 
 export const getFeatureComments = (featureObj) => async (dispatch) => {
-    console.log("WHAT", featureObj)
-    console.log("THIS IS BULLSHIT", parseInt(featureObj.objId,10))
+
     const response = await fetch(`/api/comments/${featureObj.type}/${featureObj.objId}/`)
 
     if (response.ok) {
@@ -21,7 +20,6 @@ export const getFeatureComments = (featureObj) => async (dispatch) => {
 
 export const makeNewComment = (comment) => async (dispatch) => {
     let featureObj;
-    console.log("Comment", comment)
 
     if(comment.type !== "Comment"){
         featureObj = {
@@ -36,7 +34,6 @@ export const makeNewComment = (comment) => async (dispatch) => {
     }
 
 
-    console.log("COMMENT", featureObj)
     const response = await fetch(`/api/comments/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -78,7 +75,6 @@ export const editOneComment = (comment) => async (dispatch) => {
             objId: comment.parentId
         }
     }
-    console.log("EDIT ONE COMMENT RES", comment)
 
     const response = await fetch(`/api/comments/${comment.id}/`, {
         method: 'POST',
@@ -87,7 +83,6 @@ export const editOneComment = (comment) => async (dispatch) => {
     });
     if (response.ok) {
         const comment = await response.json();
-        console.log("UPDATED COMMENT", comment)
         dispatch(getFeatureComments(featureObj));
     }
 }
@@ -97,7 +92,6 @@ const initialState = {}
 const commentReducer = (state = initialState , action) => {
     switch (action.type) {
         case GET_COMMENTS:
-            console.log(action.payload)
             let newState = {
                 ...state,
                 ...action.payload
