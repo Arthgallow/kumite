@@ -21,7 +21,7 @@ function GetFighters(){
 
             return (
 
-                <NavLink to={`/users/${user.id}`} className="fighter_card_container">
+                <NavLink key={user.id} to={`/users/${user.id}`} className="fighter_card_container">
                     <div className="fighter_card_inner">
                         <div className="fighter_card_front">
                             <div className="fighter_card_front_top" >
