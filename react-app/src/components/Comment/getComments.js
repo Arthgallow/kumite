@@ -18,20 +18,16 @@ const GetComments = ({featureObj}) => {
     const sessionComments = useSelector(state => state.comments)
     const newCommentStatus = useSelector(state => state.reply.status)
     const commentId = useSelector(state => state.reply.commentId)
-    const editCommentStatus = useSelector(state => state.edit.status)
-    const editCommentId = useSelector(state => state.edit.commentId)
     const [showNewComment, setShowNewComment] = useState(newCommentStatus)
-    const [showEditComment, setShowEditComment] = useState(editCommentStatus)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getFeatureComments(featureObj))
         setShowNewComment(newCommentStatus)
-        setShowEditComment(editCommentStatus)
-        
 
-    }, [dispatch, newCommentStatus,  editCommentStatus, featureObj])
+
+    }, [dispatch, newCommentStatus, featureObj])
 
 
 
