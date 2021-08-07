@@ -15,7 +15,7 @@ function GetFighters(){
     },[]);
 
     const returnFighters = (
-        fighters.map(fighter => {
+        fighters?.map(fighter => {
             let user = {...fighter[0], ...fighter[1]}
             console.log("CURRNET USER", user)
 
