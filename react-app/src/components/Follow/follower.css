@@ -33,7 +33,9 @@
 
 }
 
-.follower_link{
+/* .follower_link{
+    align-content: center;
+    justify-content: center;
     margin:5px;
     box-shadow:
        inset 0 -3em 3em rgba(0,0,0,0.1),
@@ -43,12 +45,25 @@
     width: auto;
     height: 3vw;
     border-radius: 50%;
+} */
+.follower_link{
+    border:none;
+    background-color: transparent;
+
 }
-.follower_link .follower_img {
-    border-radius: 50% ;
+.follower_img{
+    text-decoration: none;
+    align-content: center;
+    justify-content: center;
+    margin:5px;
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.2em 1.5em rgb(193, 41, 41);
+    text-decoration: none;
     width: auto;
     height: 3vw;
-
+    border-radius: 50%;
 }
 .follower_name {
 

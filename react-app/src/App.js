@@ -9,7 +9,6 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import GetFighters from './components/GetFighters/getFighters';
 import User from './components/User';
 import { authenticate } from './store/session';
-import './app.css'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,14 +26,9 @@ function App() {
   }
 
   return (
-    <div className="App">
-
-
     <BrowserRouter >
-      <div className="App_nav_bar">
-      <NavBar />
-      </div>
-        <div className="App_content">
+      <NavBar  />
+
       <Switch >
 
         <ProtectedRoute path='/fighters' exact={true} >
@@ -51,9 +45,8 @@ function App() {
 
       </Switch>
 
-    </div>
     </BrowserRouter>
-    </div>
+
   );
 }
 

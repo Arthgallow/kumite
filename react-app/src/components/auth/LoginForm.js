@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -15,8 +15,14 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+
     }
+
   };
+
+  if (user) {
+    return <Redirect to={`/fighters`} />;
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -26,9 +32,6 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
 
   return (
     <form onSubmit={onLogin}>

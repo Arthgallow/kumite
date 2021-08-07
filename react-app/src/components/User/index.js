@@ -28,8 +28,7 @@ function User() {
       setUser(user);
     })();
 
-
-  }, [userId,  GetFollowing]);
+  }, [userId, UnFollowUser]);
 
   if (!user) {
     return null;

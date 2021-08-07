@@ -8,7 +8,7 @@ import './follower.css'
 const GetFollowers = ({featureObj}) => {
     const dispatch = useDispatch();
     const sessionFollowers = useSelector(state => state.followers);
-    let x =0
+    let x = 0
     let followers= [];
     for( const [key, value] in Object.entries(sessionFollowers) ) {
         followers.push(

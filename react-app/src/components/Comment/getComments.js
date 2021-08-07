@@ -29,6 +29,7 @@ const GetComments = ({featureObj}) => {
         dispatch(getFeatureComments(featureObj))
         setShowNewComment(newCommentStatus)
         setShowEditComment(editCommentStatus)
+        
 
     }, [dispatch, newCommentStatus,  editCommentStatus, featureObj])
 
@@ -154,10 +155,6 @@ const GetComments = ({featureObj}) => {
                                 <div className="show_btn">...</div>
                                 <div className="show_menu">{menu}</div>
                             </div>
-                        </div>
-                        <div className="inner_comment">
-                            {/* {retrieveThread(thread)} */}
-
                         </div>
                     </div>
                 )

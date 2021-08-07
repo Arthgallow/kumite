@@ -1,18 +1,19 @@
 .user_page_container_bord {
-    margin-top:100px;
+    /* margin-top:100px; */
+    position:relative;
     display:grid;
     width:90vw;
     margin-left: auto;
     margin-right: auto;
     height: 80vh;
-    border:1px solid black;
+    /* border:1px solid black; */
     height:auto ;
     width: auto;
     background-color: transparent;
     perspective: 1000px;
     /* overflow: hidden; */
     grid-template-areas:
-    "top_l top_l top_r top_r top_r top_r top_r"
+    "top_l top_l top_l top_r top_r top_r top_r"
     "bottom_l bottom_l  bottom_l bottom_l bottom_r  bottom_r bottom_r"
     ;
 }
