@@ -9,9 +9,9 @@ function GetFighters(){
         async function fetchFighters(){
             const response = await fetch(`/api/fighters`);
             const data = await response.json();
-            setFighters(data);
+            return data
         }
-        fetchFighters();
+        fetchFighters().then((data)=> setFighters(data))
     },[]);
 
     const returnFighters = (
