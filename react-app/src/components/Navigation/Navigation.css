@@ -5,4 +5,16 @@
     width: 100%;
     height: 100px;
     z-index: 1;
+    display: grid;
+    grid-template-areas:
+        "nav_bar_left nav_bar_center nav_bar_right";
+}
+.nav_bar_inner_left{
+    grid-area: nav_bar_left;
+}
+.nav_bar_inner_center{
+    grid-area: nav_bar_center;
+}
+.nav_bar_inner_right{
+    grid-area: nav_bar_right;
 }

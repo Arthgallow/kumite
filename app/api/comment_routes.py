@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request, session
+from flask_login import login_required
 from sqlalchemy import inspect
 from app.models import db, Comment,User
 from app.models.comment import new_comment, comment_thread
@@ -10,6 +11,7 @@ comment_routes = Blueprint('comments', __name__)
 
 
 @comment_routes.route('/', methods=['POST'])
+@login_required
 def add_comment():
     data=eval(request.json['type']).query.get(int(request.json['objId']))
 
@@ -22,10 +24,6 @@ def add_comment():
 
     db.session.add(comment)
     db.session.commit()
-    print('*'*50)
-    print("NEW COMMENT", comment)
-    print('*'*50)
-
     if(request.json['type'] == "Comment"):
         add_comment = new_comment.insert().values(user_id=comment.user_id, comment_id=comment.id)
         db.session.execute(add_comment)
@@ -60,6 +58,7 @@ def get_comments(feature, id):
 
 
 @comment_routes.route('/<int:id>/', methods=['DELETE'])
+@login_required
 def delete_comment(id):
     comment=Comment.query.get(id)
     db.session.delete(comment)
