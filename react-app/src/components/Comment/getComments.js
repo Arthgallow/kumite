@@ -27,7 +27,7 @@ const GetComments = ({featureObj}) => {
         setShowNewComment(newCommentStatus)
 
 
-    }, [dispatch, newCommentStatus, featureObj])
+    }, [dispatch, newCommentStatus, NewComment, featureObj])
 
 
 
@@ -104,11 +104,12 @@ const GetComments = ({featureObj}) => {
                                 </Link>
                                 <div className="colon">:</div>
                                 <div style={{'backgroundColor':"red"} }className="comment_comment">
-                                    {thread.description}
+
+                                    {thread.description} : {thread.id} : {parentObj} : {parentId}
 
                                     { showNewComment && ( <> {thread.id === commentId && (<NewComment
                                         featureObj={{type: 'Comment', objId: thread.id,
-                                        parentObj, parentId:parentId }}
+                                        parentObj, parentId:thread.id }}
                                         hideForm={()=>closeNewComment()}
                                         showNewComment={showNewComment}
                                         />)}</>)
@@ -138,7 +139,7 @@ const GetComments = ({featureObj}) => {
                             <div className="colon">:</div>
                             <div  style={{"backgroundColor":"pink"}}className="comment_comment">
 
-                                {thread.description}
+                                {thread.description} : {thread.id} : {parentObj} : {parentId}
                                 { showNewComment  && ( <> {thread.id === commentId && (<NewComment
                                     featureObj={{type: 'Comment', objId: thread.id,
                                     parentObj, parentId:parentId }}
@@ -166,7 +167,8 @@ const GetComments = ({featureObj}) => {
                     <div className="colon"> : </div>
 
                     <div className="comment_comment ">
-                        {comment.description}
+
+                        {comment.description} : {comment.id} : {parentObj} : {parentId}
 
                             { showNewComment && ( <> {comment.id === commentId && (<NewComment
                                 featureObj={{type: 'Comment', objId: comment.id,
@@ -195,12 +197,12 @@ const GetComments = ({featureObj}) => {
     return (
         <>
             <div className="comments_bord">
-            <div className="add_comment ">
-                <NewComment
-                    featureObj={{type: 'User', objId: parentId,
-                    parentObj, parentId:parentId }}
-                    hideForm={()=>closeNewComment()}/>
-            </div>
+                <div className="add_comment ">
+                    <NewComment
+                        featureObj={{type: 'User', objId: parentId,
+                        parentObj, parentId:parentId }}
+                        hideForm={()=>closeNewComment()}/>
+                </div>
                 {comments}
             </div>
         </>
