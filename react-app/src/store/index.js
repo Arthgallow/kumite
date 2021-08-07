@@ -5,7 +5,7 @@ import comments from './comments';
 import followers from './followers';
 import following from './following';
 import reply from './newComment';
-import edit from './editComment';
+import fighters from './fighters';
 
 
 const rootReducer = combineReducers({
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   followers,
   following,
   reply,
-  edit,
+  fighters,
 });
 
 

@@ -1,22 +1,24 @@
 import React,{useState,useEffect,useCallback} from 'react';
 import {NavLink} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {getFighters} from "../../store/fighters"
 import "./GetFighters.css"
 
 function GetFighters(){
-    const [fighters,setFighters] = useState([]);
-
+    const fighters = useSelector(state => state.fighters);
+    const sessionUser = useSelector(state => state.session.user);
+    let dispatch = useDispatch();
+    console.log(sessionUser);
+    let returnFighters;
     useEffect(()=>{
-        async function fetchFighters(){
-            const response = await fetch(`/api/fighters`);
-            const data = await response.json();
-            return data
-        }
-        fetchFighters().then((data)=> setFighters(data))
-    },[]);
+        dispatch(getFighters());
+    },[dispatch]);
+    console.log("FIGHTERS", fighters);
 
-    const returnFighters = (
-        fighters?.map(fighter => {
-            let user = {...fighter[0], ...fighter[1]}
+    if(fighters.length > 0){
+        returnFighters = (
+                fighters?.map(fighter => {
+                        let user = {...fighter[0], ...fighter[1]}
             console.log("CURRNET USER", user)
 
             return (
@@ -65,9 +67,10 @@ function GetFighters(){
     )
 
 
+}
     return (
-      <div className="card_table"> {returnFighters} </div>
-    )
+        <div className="card_table"> {returnFighters} </div>
+        )
 
 }
 export default GetFighters;
