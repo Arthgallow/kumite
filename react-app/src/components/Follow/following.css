@@ -1,7 +1,6 @@
 .following_bord{
-
+    margin: 20px;
     border-radius: 25px;
-    margin: 50px;
     box-shadow:
        inset 0 -3em 3em rgb(0,0,0,0.1),
              0 0  0 2px rgb(255,255,255),
@@ -10,7 +9,6 @@
     grid-area:
     "title"
     "list";
-    margin:auto;
     height: auto;
     width: 75vh;
     background-color: transparent;
@@ -18,38 +16,47 @@
 }
 .following_title{
     grid-area: "title";
-    margin: 10px;
     text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Permanent Marker', cursive;
 
 
 }
 .following_list{
     grid-area: "list";
     display: flex;
-    width: 500px;
     height: auto;
     padding : 10px;
-    flex-flow: row wrap;
-    flex-basis:20%;
 
 }
-
-.following_link{
-    text-decoration: none;
+/* .following_link .following_img {
+    align-content: center;
+    box-shadow:
+    inset 0 -3em 3em rgba(0,0,0,0.1),
+    0 0  0 2px rgb(255,255,255),
+    0.3em 0.2em 1.5em rgb(193, 41, 41);
+    border-radius: 50% ;
     width: auto;
     height: 4vw;
-    border-radius: 50%;
-    margin: 10px;
+} */
+.following_link{
+    border:none;
+    background-color: transparent  ;
 }
-.following_link .following_img {
+.following_img{
+    text-decoration: none;
     align-content: center;
+    justify-content: center;
+    margin:5px;
     box-shadow:
        inset 0 -3em 3em rgba(0,0,0,0.1),
              0 0  0 2px rgb(255,255,255),
              0.3em 0.2em 1.5em rgb(193, 41, 41);
-    border-radius: 50% ;
+    text-decoration: none;
     width: auto;
-    height: 4vw;
+    height: 3vw;
+    border-radius: 50%;
 }
 .following_name {
     text-decoration: none;

@@ -26,9 +26,9 @@ const NavBar = () => {
               </NavLink>
             </div>
             <div className="nav_bar_inner_center_right">
-              <NavLink style={{textDecoration:'none', color:'black'}} to='/fights' exact={true} activeClassName='active'>
+              {/* <NavLink style={{textDecoration:'none', color:'black'}} to='/fights' exact={true} activeClassName='active'>
                 Fights
-              </NavLink>
+              </NavLink> */}
             </div>
           </div>
           <div className="nav_bar_inner_right">

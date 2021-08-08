@@ -6,9 +6,9 @@ import './followBtn.css'
 
 
 const FollowUser = ({featureObj}) => {
-    const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-
+    const sessionUser = useSelector(state => state.session.user)
+    
     let handleClick = (e) => {
         e.preventDefault();
         dispatch(followUser({sessionUser, featureObj}))

@@ -32,10 +32,10 @@ function App() {
       <NavBar  />
 
       <Switch >
-
+{/*
         <ProtectedRoute path='/fighters' exact={true} >
           <GetFighters/>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -44,8 +44,8 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UserList />
         </ProtectedRoute>
-
-          =<SplashPage path='/' exact={true} />
+{/* 
+        <SplashPage path='/' exact={true} /> */}
 
 
       </Switch>

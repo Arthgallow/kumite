@@ -1,6 +1,5 @@
 .follower_bord{
     border-radius: 25px;
-    margin-top: 20px;
     margin: 10px;
     box-shadow:
        inset 0 -3em 3em rgb(0,0,0,0.1),
@@ -22,6 +21,9 @@
     grid-area: "title";
     margin: 10px;
     text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Permanent Marker', cursive;
 
 
 }

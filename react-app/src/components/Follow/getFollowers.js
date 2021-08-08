@@ -12,7 +12,7 @@ const GetFollowers = ({featureObj}) => {
     let followers= [];
     for( const [key, value] in Object.entries(sessionFollowers) ) {
         followers.push(
-            <Link key={x+=1} className="follower_link" to={`/users/${sessionFollowers[key].id}`}>
+            <Link style={{textDecoration:"none"}} key={x+=1} className="follower_link" to={`/users/${sessionFollowers[key].id}`}>
                 <img className="follower_img" src={sessionFollowers[key].user_image}  alt={sessionFollowers[key].name} />
                 <h2 className="follower_name">{sessionFollowers[key].username}</h2>
             </Link>
@@ -21,7 +21,7 @@ const GetFollowers = ({featureObj}) => {
 
     useEffect(async() => {
         await dispatch(getUsersFollowers(featureObj))
-    }, [dispatch, featureObj])
+    }, [dispatch, sessionFollowers])
 
     return(
         <div className="follower_bord">

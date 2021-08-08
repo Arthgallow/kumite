@@ -12,7 +12,7 @@ const GetFollowed = ({featureObj}) => {
     for( const [key, value] in Object.entries(sessionFollowing) ) {
 
         following.push(
-            <Link key={x+=1} className="following_link" to={`/users/${sessionFollowing[key].id}`}>
+            <Link style={{textDecoration:"none"}} key={x+=1} className="following_link" to={`/users/${sessionFollowing[key].id}`}>
                 <img className="following_img" src={sessionFollowing[key].user_image} alt={sessionFollowing[key].name} />
                 <h2 className="following_name">{sessionFollowing[key].username}</h2>
             </Link>
