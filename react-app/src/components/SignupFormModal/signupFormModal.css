@@ -1,0 +1,26 @@
+.signup_btn{
+    height: 70px;
+    width: 100px;
+    background-color: transparent;
+    grid-template-areas:
+    "top"
+    "bottom";
+}
+.signup_icon{
+    background-color: transparent;
+    margin-left:200px;
+    margin-top:10px;
+    display: grid;
+    grid-area: top;
+    height: 50px;
+}
+.signup_label{
+    width: 100px;
+    display: grid;
+    grid-area: bottom;
+    margin:0;
+    padding:0;
+    margin-left:175px;
+    font-size: 25px;
+
+}

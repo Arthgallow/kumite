@@ -1,0 +1,24 @@
+.logout_btn{
+    height: 70px;
+    width: 100px;
+    background-color: transparent;
+    grid-template-areas:
+    "top"
+    "bottom";
+}
+.logout_icon{
+    margin-left:200px;
+    display: grid;
+    grid-area: top;
+    height: 50px;
+}
+.logout_label{
+    width: 150px;
+    display: grid;
+    grid-area: bottom;
+    margin:0;
+    padding:0;
+    margin-left:170px;
+    font-size: 25px;
+
+}

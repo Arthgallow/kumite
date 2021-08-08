@@ -1,0 +1,24 @@
+.login_btn{
+    height: 70px;
+    width: 100px;
+    background-color: transparent;
+    grid-template-areas:
+    "top"
+    "bottom";
+}
+.login_icon{
+    margin-left:200px;
+    display: grid;
+    grid-area: top;
+    height: 60px;
+}
+.login_label{
+    width: 100px;
+    display: grid;
+    grid-area: bottom;
+    margin:0;
+    padding:0;
+    margin-left:190px;
+    font-size: 25px;
+
+}

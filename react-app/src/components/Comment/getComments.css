@@ -99,7 +99,6 @@
 }
 .show_menu, .btn_box:hover .show_btn{
     display:none;
-    background-color: cornflowerblue;
 }
 .show_menu{
     background-color: transparent;

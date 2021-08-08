@@ -10,6 +10,7 @@ import GetFighters from './components/GetFighters/getFighters';
 import UserList from './components/UserList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import SplashPage from './components/splashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UserList />
         </ProtectedRoute>
+
+          =<SplashPage path='/' exact={true} />
+
 
       </Switch>
 

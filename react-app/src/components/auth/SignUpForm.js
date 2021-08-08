@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import "./signUpForm.css"
 
 const SignUpForm = () => {
 const type = [
@@ -71,58 +72,68 @@ const type = [
   console.log(errors)
 
   return (
-    <form onSubmit={onSignUp}>
+    <form className="signup_form" onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>First Name</label>
+      <div className="greeting">
+        <p>First rule of fight club? Tell your friends</p>
+        <h1>Join the Club!</h1>
+      </div>
+      <div className="firstname_div">
+        <label className="firstname_label">First Name</label>
         <input
+          className="firstname_input"
           type="text"
           name="firstname"
           onChange={updateFirstname}
           value={firstname}/>
       </div>
-      <div>
-        <label>Last Name</label>
+      <div className="lastname_div">
+        <label className="lastname_label">Last Name</label>
         <input
+          className="lastname_input"
           type="text"
           name="lastname"
           onChange={updateLastname}
           value={lastname}/>
       </div>
-      <div>
-        <label>User Name</label>
+      <div className="username_div" >
+        <label className="username_label">User Name</label>
         <input
+          className="username_input"
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
         ></input>
       </div>
-      <div>
-        <label>Email</label>
+      <div className="email_div">
+        <label className="email_label">Email</label>
         <input
+          className="email_input"
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
-      <div>
-        <label>Password</label>
+      <div className="password_div">
+        <label className="password_label">Password</label>
         <input
+          className="password_input"
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
         ></input>
       </div>
-      <div>
-        <label>Repeat Password</label>
+      <div className="password_div">
+        <label className="password_label">Repeat Password</label>
         <input
+          className="password_input"
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -130,9 +141,10 @@ const type = [
           required={true}
         ></input>
       </div>
-      <div>
-        <lable>Profile Pic</lable>
+      <div className="profilePic_div">
+        <lable className="profilePic_label">Profile Pic</lable>
         <input
+          className="profilePic_input"
           type='text'
           name='profile_pic'
           onChange={updateUserImg}
@@ -140,28 +152,21 @@ const type = [
           value={userImg}
         />
       </div>
-      <div>
-      {/* <select
-        value={color}
-        onChange={(e)=>setColor(e.target.value)}
-        >
-          {COLORS.map(color => (
-            <option
-              key={color}
-            >
-              {color}
-            </option>
-          ))}
-        </select> */}
-        <label>User Type</label>
-        <select name="user_type">
+      <div className="userType_div">
+        <label className="userType_label">User Type</label>
+        <select className="userType_select" name="user_type">
           <option value={1}>--Choose User Type--</option>
           <option value={1}>Bystander</option>
           <option value={2} >Fighter</option>
           <option value={3}>Promoter</option>
         </select>
       </div>
-      <button type='submit'>Sign Up</button>
+      <div className="signupBtn_box">
+        <button style={{border:'none'}} className="loginForm_btn" type='submit'>
+          <img className="signupForm_icon"  src={"https://image.flaticon.com/icons/png/128/748/748137.png"}  ></img>
+          <h1 className="signupForm_label">Sign Up</h1>
+        </button>
+      </div>
     </form>
   );
 };

@@ -1,0 +1,114 @@
+.signup_form{
+    background-color: rgb(255, 255, 255);
+    box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.575),
+          0 0  0 2px rgba(255, 255, 255, 0.404),
+          0.3em 0.3em 1em rgba(193, 41, 41, 0.103);
+    display:flex;
+    height: auto;
+    width: 500px;
+    font-size: 20px;
+    flex-direction: column;
+}
+.greeting{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    /* font-family: 'Permanent Marker'; */
+}
+.firstname_div{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.firstname_input{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.lastname_div{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.lastname_input{
+    margin-left: 10px;
+    height: 20px;
+    width: 50%;
+}
+.username_div{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.username_input{
+    margin-left: 10px;
+    height: 20px;
+    width: 50%;
+}
+.email_div{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.email_input{
+    margin-left: 10px;
+    height: 20px;
+    width: 50%;
+}
+.password_div{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.password_input{
+    margin-left: 10px;
+    height: 20px;
+    width: 50%;
+}
+.profilePic_div{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.profilePic_input{
+    margin-left: 10px;
+    height: 20px;
+    width: 50%;
+}
+.userType_div{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.userType_select{
+    margin-left: 10px;
+    height: 20px;
+    width: 50%;
+}
+.signupBtn_box{
+    margin-top: 20px;
+    display:grid;
+    grid-template-areas: "left right";
+}
+.signupForm_btn{
+    background-color: transparent;
+    display:grid;
+    grid-area: left;
+}
+.signupForm_icon{
+
+    margin-left: 200px;
+    height: 60px;
+    width: 60px;
+    background-color: transparent;
+}
+.signupForm_label{
+    margin-left: 85px;
+}
