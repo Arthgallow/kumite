@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, session
 from flask_login import login_required
 from app.models import db, User, Fighter
 
@@ -7,7 +7,6 @@ from app.models import db, User, Fighter
 fighter_routes = Blueprint('fighters', __name__)
 
 @fighter_routes.route('/')
-@login_required
 def get_all_fighters():
     print("*"*50)
     results = db.session.query(Fighter, User).join(User).all()

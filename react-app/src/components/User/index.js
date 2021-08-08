@@ -28,7 +28,8 @@ function User() {
       setUser(user);
     })();
 
-  }, [userId, UnFollowUser]);
+
+  }, [userId, ]);
 
   if (!user) {
     return null;

@@ -8,7 +8,7 @@ function GetFighters(){
     const fighters = useSelector(state => state.fighters);
     const sessionUser = useSelector(state => state.session.user);
     let dispatch = useDispatch();
-    console.log(sessionUser);
+
     let returnFighters;
     useEffect(()=>{
         dispatch(getFighters());

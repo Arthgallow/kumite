@@ -14,7 +14,9 @@ comment_routes = Blueprint('comments', __name__)
 @login_required
 def add_comment():
     data=eval(request.json['type']).query.get(int(request.json['objId']))
-
+    print("*"*80)
+    print("comment", data)
+    print("*"*80)
     comment = Comment(
         user_id=request.json['user_id'],
         description=request.json['description'],
@@ -25,25 +27,22 @@ def add_comment():
     db.session.add(comment)
     db.session.commit()
     if(request.json['type'] == "Comment"):
-        add_comment = new_comment.insert().values(user_id=comment.user_id, comment_id=comment.id)
-        db.session.execute(add_comment)
-        db.session.commit()
 
         add_to_thread = comment_thread.insert().values(post=request.json['objId'], reply=comment.id, )
         db.session.execute(add_to_thread)
         db.session.commit()
 
-    if(request.json['type'] == "User"):
-        comment = Comment(
-            user_id=request.json['user_id'],
-            description=request.json['description'],
-            user_name=request.json['user_name'],
-            user_img =request.json['user_img'] ,
-        )
 
-        feature = data.query.get(int(request.json['objId']))
-        feature.comments.append(comment)
+    if(request.json['type'] == "User"):
+        # add_comment = new_comment.insert().values(user_id=comment.user_id, comment_id=comment.id)
+        # db.session.execute(add_comment)
+        # db.session.commit()
+        
+        data.comments.append(comment)
         db.session.commit()
+
+
+
 
     return {"comments" : comment.to_dict()}
 

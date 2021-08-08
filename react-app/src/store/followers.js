@@ -26,6 +26,8 @@ export const followUser = ({featureObj, sessionUser}) => async(dispatch) => {
     })
     if(response.ok){
         const data = await response.json()
+        console.log("DATA", data)
+        console.log("FeaturObj", featureObj)
         getUsersFollowers(featureObj)
     }
 }

@@ -7,6 +7,7 @@ import NavBar from './components/Navigation';
 import Comment from './components/Comment';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import GetFighters from './components/GetFighters/getFighters';
+import UserList from './components/UserList';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -39,8 +40,8 @@ function App() {
           <User />
         </ProtectedRoute>
 
-        <ProtectedRoute>
-
+        <ProtectedRoute path='/users' exact={true} >
+          <UserList />
         </ProtectedRoute>
 
       </Switch>
