@@ -103,9 +103,9 @@ const GetComments = ({featureObj}) => {
                                     <a className="pic_off">{thread.user_name} </a>
                                 </Link>
                                 <div className="colon">:</div>
-                                <div style={{'backgroundColor':"red"} }className="comment_comment">
+                                <div className="comment_comment">
 
-                                    {thread.description} : {thread.id} : {parentObj} : {parentId}
+                                    {thread.description}
 
                                     { showNewComment && ( <> {thread.id === commentId && (<NewComment
                                         featureObj={{type: 'Comment', objId: thread.id,
@@ -137,9 +137,9 @@ const GetComments = ({featureObj}) => {
                                 <a className="pic_off">{thread.user_name} </a>
                             </Link>
                             <div className="colon">:</div>
-                            <div  style={{"backgroundColor":"pink"}}className="comment_comment">
+                            <div className="comment_comment">
 
-                                {thread.description} : {thread.id} : {parentObj} : {parentId}
+                                {thread.description}
                                 { showNewComment  && ( <> {thread.id === commentId && (<NewComment
                                     featureObj={{type: 'Comment', objId: thread.id,
                                     parentObj, parentId:parentId }}
@@ -165,10 +165,9 @@ const GetComments = ({featureObj}) => {
                         <a className="pic_off">{comment.user_name} </a>
                     </Link>
                     <div className="colon"> : </div>
-
                     <div className="comment_comment ">
 
-                        {comment.description} : {comment.id} : {parentObj} : {parentId}
+                        {comment.description}
 
                             { showNewComment && ( <> {comment.id === commentId && (<NewComment
                                 featureObj={{type: 'Comment', objId: comment.id,

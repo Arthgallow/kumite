@@ -67,4 +67,5 @@
     display:grid;
     grid-area: out;
     margin-top: 0;
+    margin-right: 60px;
 }
