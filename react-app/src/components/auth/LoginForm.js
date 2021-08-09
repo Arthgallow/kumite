@@ -18,11 +18,14 @@ const LoginForm = () => {
       setErrors(data);
 
     }
+    if (user) {
+      return <Redirect to={`/users`} />;
+    }
 
   };
 
   if (user) {
-    return <Redirect to={`/fighters`} />;
+    return <Redirect to={`/users`} />;
   }
 
   const updateEmail = (e) => {

@@ -44,8 +44,8 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UserList />
         </ProtectedRoute>
-{/* 
-        <SplashPage path='/' exact={true} /> */}
+
+        <SplashPage path='/' exact={true} />
 
 
       </Switch>

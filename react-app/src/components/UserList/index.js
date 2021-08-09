@@ -18,7 +18,6 @@ function UsersList() {
    returnFighters = (
     users?.map(fighter => {
       let user = {...fighter[0], ...fighter[1]}
-      console.log("CURRNET USER", user)
 
       return (
 
@@ -67,23 +66,6 @@ return (
 )
 
 
-
-  // console.log("Users", users);
-
-  // const userComponents = users.map((user) => {
-  //   return (
-  //     <li key={user.id}>
-  //       <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-  //     </li>
-  //   );
-  // });
-
-  // return (
-  //   <>
-  //     <h1>User List: </h1>
-  //     <ul>{userComponents}</ul>
-  //   </>
-  // );
 }
 
 export default UsersList;
