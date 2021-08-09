@@ -30,7 +30,6 @@ const EditComment = ({comment, hideForm, featureObj}) => {
             ...featureObj
         }
         if(editedComment){
-            console.log('Test', featureObj.type.toLowerCase(), featureObj.objId)
         dispatch(editOneComment(editedComment))
         setUpdateComment("")
         hideForm()

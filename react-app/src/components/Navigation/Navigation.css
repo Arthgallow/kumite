@@ -17,6 +17,16 @@
     grid-template-areas:
         "nav_bar_left nav_bar_center nav_bar_right";
 }
+.linkedIn_icon{
+    width: 40px;
+    height: 40px;
+    margin-top: 0px;
+}
+.github_icon{
+    width: 40px;
+    height: 40px;
+    margin-top: -1000px;
+}
 .nav_bar_inner_left{
     margin-left: 20px;
     display:grid;
@@ -47,8 +57,8 @@
     grid-template-areas: "left right";
 }
 .nav_bar_inner_center_left{
-    display:grid;
     grid-area: left;
+    display:grid;
 }
 .nav_bar_inner_center_right{
     display:grid;

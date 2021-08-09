@@ -13,13 +13,11 @@ function GetFighters(){
     useEffect(()=>{
         dispatch(getFighters());
     },[dispatch]);
-    console.log("FIGHTERS", fighters);
 
     if(fighters.length > 0){
         returnFighters = (
                 fighters?.map(fighter => {
                         let user = {...fighter[0], ...fighter[1]}
-            console.log("CURRNET USER", user)
 
             return (
 

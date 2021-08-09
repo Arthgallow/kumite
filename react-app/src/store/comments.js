@@ -9,13 +9,11 @@ const getComments = (comments) => ({
 
 
 export const getFeatureComments = (featureObj) => async (dispatch) => {
-    console.log("featureObj", featureObj)
 
     const response = await fetch(`/api/comments/${featureObj.type}/${featureObj.objId}/`)
 
     if (response.ok) {
         const comments = await response.json();
-        console.log("Comments", comments)
         dispatch(getComments(comments));
     }
 }
@@ -34,7 +32,6 @@ export const makeNewComment = (comment) => async (dispatch) => {
             objId: comment.objId
         }
     }
-    console.log("Make New Comment: comment", comment)
 
 
     const response = await fetch(`/api/comments/`, {
@@ -52,7 +49,6 @@ export const makeNewComment = (comment) => async (dispatch) => {
 
     // if (response.ok) {
     //     const comment = await response.json();
-    //     console.log("Make New Comment: response", comment)
     //     dispatch( getFeatureComments(featureObj));
 
     // }
